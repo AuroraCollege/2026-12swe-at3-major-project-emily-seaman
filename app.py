@@ -21,3 +21,24 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/add")
+def add_page():
+    return render_template("add_recipe.html")
+
+from flask import request, redirect
+
+@app.route("/add_recipe", methods=["POST"])
+def add_recipe():
+    recipes = load_json("recipes.json")
+
+    new_recipe = {
+        "title": request.form["title"],
+        "description": request.form["description"],
+        "ingredients": request.form["ingredients"].split("\n")
+    }
+
+    recipes.append(new_recipe)
+    save_json("recipes.json", recipes)
+
+    return redirect("/")
