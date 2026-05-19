@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyRecipeBox</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>MyRecipeBox</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/add">Add Recipe</a>
+            <a href="/pantry">Pantry</a>
+            <a href="/shopping">Shopping List</a>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section id="recipe-list">
+            <h2>Your Recipes</h2>
+
+            {% if recipes %}
+                <div class="recipe-grid">
+                    {% for recipe in recipes %}
+                        <div class="recipe-card">
+                            <h3>{{ recipe.title }}</h3>
+                            <p>{{ recipe.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No recipes yet. Add one to get started!</p>
+            {% endif %}
+        </section>
+    </main>
+
+</body>
+</html>
