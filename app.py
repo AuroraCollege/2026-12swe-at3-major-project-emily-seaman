@@ -80,3 +80,22 @@ def add_shopping_item():
     save_json("shopping_list.json", shopping)
 
     return redirect("/shopping")
+
+# backend route to generate the shopping list
+
+@app.route("/add_to_shopping/<int:recipe_index>")
+def add_to_shopping(recipe_index):
+    recipes = load_json("recipes.json")
+    pantry = load_json("pantry.json")
+    shopping = load_json("shopping_list.json")
+
+    recipe = recipes[recipe_index]
+    ingredients = recipe["ingredients"]
+
+    for item in ingredients:
+        if item not in pantry and item not in shopping:
+            shopping.append(item)
+
+    save_json("shopping_list.json", shopping)
+
+    return redirect("/shopping")

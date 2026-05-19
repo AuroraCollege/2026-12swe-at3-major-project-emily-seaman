@@ -35,8 +35,7 @@ main {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-#recipe
-
+/* FORM STYLING */
 form {
     display: flex;
     flex-direction: column;
@@ -60,8 +59,7 @@ button {
     font-weight: bold;
 }
 
-#pantry
-
+/* PANTRY LIST */
 .pantry-list {
     list-style: none;
     padding: 0;
@@ -75,8 +73,7 @@ button {
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-#shopping
-
+/* SHOPPING LIST */
 .shopping-list {
     list-style: none;
     padding: 0;
@@ -89,3 +86,16 @@ button {
     border-radius: 6px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #ff7043;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
