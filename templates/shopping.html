@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Shopping List</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/add">Add Recipe</a>
+        <a href="/pantry">Pantry</a>
+        <a href="/shopping">Shopping List</a>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>Items to Buy</h2>
+
+        {% if shopping %}
+            <ul class="shopping-list">
+                {% for item in shopping %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Your shopping list is empty.</p>
+        {% endif %}
+    </section>
+
+    <section class="form-section">
+        <h2>Add Item</h2>
+
+        <form method="POST" action="/add_shopping_item">
+            <label>Item Name</label>
+            <input type="text" name="item" required>
+
+            <button type="submit">Add to List</button>
+        </form>
+    </section>
+</main>
+
+</body>
+</html>

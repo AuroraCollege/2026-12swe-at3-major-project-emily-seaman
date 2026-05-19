@@ -64,3 +64,19 @@ def add_pantry_item():
 
     return redirect("/pantry")
 
+# shopping list
+
+@app.route("/shopping")
+def shopping_page():
+    shopping = load_json("shopping_list.json")
+    return render_template("shopping.html", shopping=shopping)
+
+@app.route("/add_shopping_item", methods=["POST"])
+def add_shopping_item():
+    shopping = load_json("shopping_list.json")
+    new_item = request.form["item"]
+
+    shopping.append(new_item)
+    save_json("shopping_list.json", shopping)
+
+    return redirect("/shopping")
