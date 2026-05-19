@@ -22,6 +22,8 @@ def home():
 if __name__ == "__main__":
     app.run(debug=True)
 
+#add recipe
+
 @app.route("/add")
 def add_page():
     return render_template("add_recipe.html")
@@ -42,3 +44,23 @@ def add_recipe():
     save_json("recipes.json", recipes)
 
     return redirect("/")
+
+#pantry
+
+@app.route("/pantry")
+def pantry_page():
+    pantry = load_json("pantry.json")
+    return render_template("pantry.html", pantry=pantry)
+
+from flask import request, redirect
+
+@app.route("/add_pantry_item", methods=["POST"])
+def add_pantry_item():
+    pantry = load_json("pantry.json")
+    new_item = request.form["item"]
+
+    pantry.append(new_item)
+    save_json("pantry.json", pantry)
+
+    return redirect("/pantry")
+
