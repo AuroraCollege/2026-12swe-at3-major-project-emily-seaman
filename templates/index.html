@@ -42,7 +42,6 @@
 </body>
 </html>
 
-
 <div class="recipe-grid">
     {% for recipe in recipes %}
         <div class="recipe-card">
@@ -52,6 +51,11 @@
             <a class="btn" href="/add_to_shopping/{{ loop.index0 }}">
                 Add Ingredients to Shopping List
             </a>
+
+            <a class="btn" href="/complete_recipe/{{ loop.index0 }}">
+                Recipe Completed
+            </a>
         </div>
     {% endfor %}
 </div>
+

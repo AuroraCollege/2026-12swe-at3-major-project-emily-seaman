@@ -23,9 +23,14 @@
         <h2>Items to Buy</h2>
 
         {% if shopping %}
-            <ul class="shopping-list">
+           <ul class="shopping-list">
                 {% for item in shopping %}
-                    <li>{{ item }}</li>
+                    <li>
+                        <form method="POST" action="/got_item/{{ loop.index0 }}" style="display:inline;">
+                            <button class="check-btn" type="submit">✔</button>
+                        </form>
+                        {{ item }}
+                    </li>
                 {% endfor %}
             </ul>
         {% else %}

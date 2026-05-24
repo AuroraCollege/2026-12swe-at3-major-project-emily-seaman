@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete Recipe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Recipe Completed</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/add">Add Recipe</a>
+        <a href="/pantry">Pantry</a>
+        <a href="/shopping">Shopping List</a>
+    </nav>
+</header>
+
+<main>
+    <h2>{{ recipe.title }}</h2>
+    <p>Select the ingredients you used up:</p>
+
+    <form method="POST" action="/update_pantry_after_recipe/{{ index }}">
+        {% for item in recipe.ingredients %}
+            <label>
+                <input type="checkbox" name="used_items" value="{{ item }}">
+                {{ item }}
+            </label><br>
+        {% endfor %}
+
+        <button type="submit">Update Pantry</button>
+    </form>
+</main>
+
+</body>
+</html>

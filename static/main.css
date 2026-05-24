@@ -99,3 +99,19 @@ button {
     margin-top: 10px;
 }
 
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+
+.check-btn {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: bold;
+}
